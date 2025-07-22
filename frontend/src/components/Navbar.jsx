@@ -1,52 +1,22 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 
 export default function Navbar() {
-  const [loggedIn, setLoggedIn] = useState(false)
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    setLoggedIn(!!token)
-  }, [])
+  const { logout } = useAuth()
 
   const handleLogout = () => {
-    localStorage.removeItem('token')
+    logout()
     navigate('/login')
   }
 
-  if (!loggedIn) return null
-
   return (
-    <nav style={styles.nav}>
-      <Link style={styles.link} to="/products">Produtos</Link>
-      <Link style={styles.link} to="/sales">Vendas</Link>
-      <Link style={styles.link} to="/reports">Relatórios</Link>
-      <button style={styles.button} onClick={handleLogout}>Sair</button>
+    <nav>
+      <button onClick={() => navigate('/dashboard')}>Dashboard</button>
+      <button onClick={() => navigate('/products')}>Produtos</button>
+      <button onClick={() => navigate('/sales')}>Vendas</button>
+      <button onClick={() => navigate('/reports')}>Relatórios</button>
+      <button onClick={handleLogout}>Sair</button>
     </nav>
   )
-}
-
-const styles = {
-  nav: {
-    display: 'flex',
-    gap: '15px',
-    padding: '10px 20px',
-    backgroundColor: '#222',
-    color: '#fff',
-    alignItems: 'center'
-  },
-  link: {
-    color: 'white',
-    textDecoration: 'none',
-    fontWeight: 'bold'
-  },
-  button: {
-    marginLeft: 'auto',
-    background: 'crimson',
-    border: 'none',
-    padding: '6px 12px',
-    color: 'white',
-    cursor: 'pointer'
-  }
 }

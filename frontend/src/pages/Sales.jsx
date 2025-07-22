@@ -52,7 +52,7 @@ export default function Sales() {
 
   return (
     <div>
-      <h2>Registrar Venda 🛒</h2>
+      <h2>Registrar Venda</h2>
 
       <form onSubmit={handleSale}>
         <select

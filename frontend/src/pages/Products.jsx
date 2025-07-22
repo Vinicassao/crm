@@ -63,7 +63,7 @@ export default function Products() {
 
   return (
     <div>
-      <h2>Produtos 🍪</h2>
+      <h2>Produtos</h2>
 
       <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
         <input

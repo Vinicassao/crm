@@ -41,7 +41,7 @@ export default function Reports() {
 
   return (
     <div>
-      <h2>Relatório de Vendas 📈</h2>
+      <h2>Relatório de Vendas</h2>
 
       <div style={{ marginBottom: '20px' }}>
         <p><strong>Total de Vendas:</strong> {totals.totalSales}</p>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import API from '../services/api'
 
 export default function LoginPage() {
@@ -7,6 +8,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -14,9 +16,8 @@ export default function LoginPage() {
     try {
       const res = await API.post('/auth/login', { email, password })
       const token = res.data.token
-
-      localStorage.setItem('token', token)
-      navigate('/dashboard') // ✅ Redirecionar após login (ou "dashboard")
+      login(token)
+      navigate('/dashboard')
   } catch (err) {
     console.error('Erro no login:', err)
     const message = err?.response?.data?.message || 'Credenciais inválidas'

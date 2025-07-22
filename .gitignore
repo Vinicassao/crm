@@ -1,0 +1,12 @@
+# Ignorar node_modules e builds em ambas as pastas
+frontend/node_modules/
+frontend/build/
+frontend/.env
+
+backend/node_modules/
+backend/.env
+
+# Ignorar arquivos locais
+.DS_Store
+.vscode/
+.idea/

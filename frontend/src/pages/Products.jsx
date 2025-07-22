@@ -113,8 +113,8 @@ export default function Products() {
               <td>{prod.price.toFixed(2)}</td>
               <td>{prod.stock}</td>
               <td>
-                <button onClick={() => handleEdit(prod)}>✏️</button>
-                <button onClick={() => handleDelete(prod._id)}>🗑️</button>
+                <button onClick={() => handleEdit(prod)}>EDITAR</button>
+                <button onClick={() => handleDelete(prod._id)}>APAGAR</button>
               </td>
             </tr>
           ))}
